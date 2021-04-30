@@ -1,0 +1,40 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'luminor'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile 'io.springfox:springfox-boot-starter:3.0.0'
+	// IBAN library
+	implementation 'nl.garvelink.oss:iban:1.9.0'
+	// CSV library
+	implementation 'com.opencsv:opencsv:5.4'
+	// JSON in Java
+	implementation group: 'org.json', name:'json', version:'20210307'
+}
+
+test {
+	useJUnitPlatform()
+}
